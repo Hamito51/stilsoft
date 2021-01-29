@@ -1,33 +1,32 @@
 from django.db import models
 
 # Create your models here.
-
-class Subcategory(models.Model):
-	"""Подкатегория"""
+class Category(models.Model):
+	"""Категория"""
 	name = models.CharField('Наименование', max_length=150)
 	url = models.SlugField(max_length=160, unique=True)
 
-	def __str__(seld):
+	def __str__(self):
+		return self.name
+
+	class Meta:
+		verbose_name = 'Категория'
+		verbose_name_plural = 'Категории'
+		
+			
+class Subcategory(models.Model):
+	"""Подкатегория"""
+	name = models.CharField('Наименование', max_length=150)
+	category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.SET_NULL, null=True)
+	url = models.SlugField(max_length=160, unique=True)
+
+	def __str__(self):
 		return self.name
 
 	class Meta:
 		verbose_name = 'Подкатегория'
 		verbose_name_plural = 'Подкатегории'
 
-
-class Category(models.Model):
-	"""Категория"""
-	name = models.CharField('Наименование', max_length=150)
-	subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
-	url = models.SlugField(max_length=160, unique=True)
-
-	def __str__(seld):
-		return self.name
-
-	class Meta:
-		verbose_name = 'Категория'
-		verbose_name_plural = 'Категории'
-			
 
 class Products(models.Model):
 	"""Товары"""
@@ -39,7 +38,7 @@ class Products(models.Model):
 	subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
 	url = models.SlugField(max_length=160, unique=True)
 
-	def __str__(seld):
+	def __str__(self):
 		return self.name
 
 	class Meta:
