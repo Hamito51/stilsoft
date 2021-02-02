@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from .yasg import urlpatterns as doc_urls
 
 
 urlpatterns = [
@@ -23,3 +24,5 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path('api/v1/', include('shop.urls')),
 ]
+
+urlpatterns += doc_urls

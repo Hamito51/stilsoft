@@ -5,7 +5,7 @@ from .serializers import ProductListSerializer, ProductDetailSerializer
 
 
 class ProductViewSet(viewsets.ReadOnlyModelViewSet):
-	"""Вывод списка продуктов"""
+	"""Информация о продуктах"""
 	def get_queryset(self):
 		products = Product.objects.all()
 		return products
