@@ -28,7 +28,7 @@ class Subcategory(models.Model):
 		verbose_name_plural = 'Подкатегории'
 
 
-class Products(models.Model):
+class Product(models.Model):
 	"""Товары"""
 	name = models.CharField('Наименование', max_length=50)
 	exp = models.PositiveSmallIntegerField('Срок годности', default=5)

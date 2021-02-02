@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Subcategory, Category, Products
+from .models import Subcategory, Category, Product
 
 # Register your models here.
 @admin.register(Subcategory)
@@ -14,7 +14,7 @@ class SubcategoryAdmin(admin.ModelAdmin):
 	list_display_links = ('name',)
 
 
-@admin.register(Products)
+@admin.register(Product)
 class SubcategoryAdmin(admin.ModelAdmin):
 	list_display = ('id', 'name', 'category', 'subcategory', 'vendor_code')
 	list_display_links = ('name',)

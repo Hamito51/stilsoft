@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.db import models
+from rest_framework import viewsets
+from .models import Product
+from .serializers import ProductListSerializer, ProductDetailSerializer
 
-# Create your views here.
+
+class ProductViewSet(viewsets.ReadOnlyModelViewSet):
+	"""Вывод списка продуктов"""
+	def get_queryset(self):
+		products = Product.objects.all()
+		return products
+	def get_serializer_class(self):
+		if self.action == 'list':
+			return ProductListSerializer
+		elif self.action == "retrieve":
+			return ProductDetailSerializer
+		
