@@ -12,7 +12,7 @@ class Category(models.Model):
 	class Meta:
 		verbose_name = 'Категория'
 		verbose_name_plural = 'Категории'
-		
+
 			
 class Subcategory(models.Model):
 	"""Подкатегория"""
@@ -36,7 +36,7 @@ class Products(models.Model):
 	vendor_code = models.PositiveIntegerField('Артикул', default=1, unique=True)
 	price = models.DecimalField('Цена', max_digits=6, decimal_places=2)
 	subcategory = models.ForeignKey(Subcategory, verbose_name='Подкатегория', on_delete=models.SET_NULL, null=True)
-	url = models.SlugField(max_length=160, unique=True)
+	url = models.SlugField(max_length=150, unique=True)
 
 	def __str__(self):
 		return self.name
