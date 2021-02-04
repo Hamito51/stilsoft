@@ -4,10 +4,9 @@ from rest_framework.response import Response
 from .models import Product
 
 
-
 class PaginationProduct(PageNumberPagination):
     """Настройки для пагинации"""
-    page_size = 1
+    page_size = 2
     max_page_size = 200
 
     def get_paginated_response(self, data):
